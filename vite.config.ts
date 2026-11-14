@@ -4,9 +4,6 @@ import fs from "fs";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// Project site: https://thetinywisdom.github.io/thumbnail-editor/
-const pagesBase = "/thumbnail-editor/";
-
 /** GitHub Pages has no SPA rewrite. Unknown paths serve 404.html with the original URL kept. */
 function githubPagesSpaFallback(): Plugin {
   let outDir = "";
@@ -27,8 +24,8 @@ function githubPagesSpaFallback(): Plugin {
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  // Dev and `build:dev` stay at `/`. The production build is what Pages publishes.
-  base: mode === "production" ? pagesBase : "/",
+  // Custom domain https://thumb.thetinywisdom.com is served from the site root.
+  base: "/",
   server: {
     host: "::",
     port: 8080,
